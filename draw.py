@@ -25,11 +25,16 @@ def main(argv):
     parser = GraphParser(stream)
     tree = parser.graph()
 
+    # walk through tree to build graph
     G = nx.Graph()
     listener = GraphLoader(G)
     walker = ParseTreeWalker()
     walker.walk(listener, tree)
-    nx.draw(G)
+
+    # draw graph
+    pos = nx.spring_layout(G)
+    nx.draw(G, pos, font_size=16, with_labels=False)
+    nx.draw_networkx_labels(G, pos)
     plt.show()
 
 
