@@ -1,4 +1,4 @@
-# Simple DSL
+# Simple Graph DSL
 
 Simple DSL with Python utilizing ANTLR and NetworkX.
 

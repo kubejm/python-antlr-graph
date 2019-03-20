@@ -5,9 +5,10 @@ from graph import GraphLexer, GraphParser, GraphListener
 import networkx as nx
 import matplotlib.pyplot as plt
 
+
 class GraphLoader(GraphListener):
     def __init__(self, graph):
-        self.g = graph 
+        self.g = graph
 
     def exitEdge(self, ctx):
         fromVertex = ctx.vertex(0).ID().getText()
@@ -15,6 +16,7 @@ class GraphLoader(GraphListener):
         weight = ctx.NUM().getText()
         print(f"add fromVertex={fromVertex} toVertex={toVertex} weight={weight}")
         self.g.add_edge(fromVertex, toVertex, weight=weight)
+
 
 def main(argv):
     input = FileStream(argv[1])
@@ -30,5 +32,6 @@ def main(argv):
     nx.draw(G)
     plt.show()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main(sys.argv)
